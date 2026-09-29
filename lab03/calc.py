@@ -7,6 +7,7 @@ def calc(n1, n2, oper):
         return n1 + n2
     if oper == "-":
         return n1 - n2
-
+    if oper == "*":
+            return n1 * n2
 
 print(calc(num1, num2, op))
