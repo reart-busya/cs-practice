@@ -26,7 +26,7 @@ def parse_record(line: str) -> dict:
     # Если все проверки пройдены, возвращаем словарь
     return {
         "city": city,
-        "temp": temp,
+        "temperature": temp,
         "date": date
     }
 
@@ -60,7 +60,7 @@ def average_by_city(records: list[dict]) -> dict:
     # Проходим по всем "чистым" записям
     for record in records:
         city = record["city"]
-        temp = record["temp"]
+        temp = record["temperature"]
         
         # Считаем общую сумму температур для города (как было в старом скрипте)
         totals[city] = totals.get(city, 0) + temp
