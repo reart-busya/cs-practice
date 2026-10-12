@@ -9,7 +9,7 @@ def parse_record(line: str) -> dict:
     
     # Распаковываем полученные части в переменные
     city = parts[0].strip()
-    temp_str = parts[1].strip()
+    temp_str = parts[1].strip().replace(",", ".")
     date = parts[2].strip()
     
     # Проверка 2: город или дата не должны быть пустыми
