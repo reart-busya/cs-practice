@@ -95,3 +95,4 @@ def warmest_city(records: list[dict]) -> str:
             best_city = city
             
     return best_city
+
