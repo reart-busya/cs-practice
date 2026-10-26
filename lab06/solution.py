@@ -4,7 +4,12 @@ def count_by_extension(paths):
     ext_counts = {}
     for p in paths:
         name = p.split("/")[-1]
-        ext = name.split(".")[-1].lower() if "." in name else ""
+
+        if "." not in name or name.startswith(".") and name.count(".") == 1:
+            ext = ""
+        else:
+            ext = name.split(".")[-1].lower() if "." in name else ""
+
         ext_counts[ext] = ext_counts.get(ext, 0) + 1
     return ext_counts
 
