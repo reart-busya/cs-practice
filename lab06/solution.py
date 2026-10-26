@@ -1,9 +1,10 @@
-paths = ["docs/report.PDF", "notes.txt", "docs/img/logo.png", "Makefile"]
+paths = ["docs/report.PDF", "notes.txt", "docs/img/logo.png", "Makefile", ".tar.gz"]
 
 def count_by_extension(paths):
     ext_counts = {}
     for p in paths:
-        ext = p.split(".")[-1].lower() if "." in p else ""
+        name = p.split("/")[-1]
+        ext = name.split(".")[-1].lower() if "." in name else ""
         ext_counts[ext] = ext_counts.get(ext, 0) + 1
     return ext_counts
 
