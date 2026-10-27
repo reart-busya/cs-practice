@@ -5,6 +5,8 @@ from logstats import count_levels, top_errors, format_report
 def main():
     filename = input().strip()
     log_path = Path(filename)
+    if not log_path.is_absolute():
+        log_path = Path(__file__).parent / log_path
 
     with log_path.open("r", encoding="utf-8") as log:
         counts = count_levels(log)
