@@ -9,10 +9,7 @@ def main():
     with log_path.open("r", encoding="utf-8") as log:
         counts = count_levels(log)
 
-    total_parsed = sum(
-        count for level, count in counts.items()
-        if level != "BROKEN"
-    )
+    total_parsed = sum(counts.values())
 
     error_count = counts.get("ERROR", 0)
     broken_count = counts.get("BROKEN", 0)
