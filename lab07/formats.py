@@ -5,13 +5,13 @@ def csv_to_records(text: str) -> list[dict]:
 
     lines = text.split('\n')
 
-    zogolovok = lines[0].split(',')
+    zogolovok = [item.strip() for item in lines[0].split(',')]
     values = []
 
     for line in lines[1:]:
         if line != "":
             dict_rez = {}
-            values = line.strip().split(',')
+            values = [item.strip() for item in line.split(',')]
             for i in range(len(zogolovok)):
                 dict_rez[zogolovok[i]] = values[i]
             rezult.append(dict_rez)
