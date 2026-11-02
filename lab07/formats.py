@@ -11,7 +11,7 @@ def csv_to_records(text: str) -> list[dict]:
     for line in lines[1:]:
         if line != "":
             dict_rez = {}
-            values = line.split(',')
+            values = line.strip().split(',')
             for i in range(len(zogolovok)):
                 dict_rez[zogolovok[i]] = values[i]
             rezult.append(dict_rez)
