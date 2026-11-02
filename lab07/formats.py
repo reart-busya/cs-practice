@@ -46,7 +46,10 @@ def parse_settings(lines: list[str]) -> dict:
                         else:
                             rezult[key] = value
                     elif '.' in value:
-                        rezult[key] = float(value)
+                        try:
+                            rezult[key] = float(value)
+                        except ValueError:
+                            rezult[key] = value
                     elif value == '':
                         rezult[key] = []
                         list_key = key
@@ -54,6 +57,8 @@ def parse_settings(lines: list[str]) -> dict:
                        rezult[key] = value
 
     return rezult
+
+print(parse_settings(["rate: 3,5 # с запятой"]))
 
 def merge_by_key(rows: list[dict], extra: list[dict], key: str = "id") -> list[dict]:
 
