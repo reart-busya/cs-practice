@@ -40,7 +40,11 @@ def parse_settings(lines: list[str]) -> dict:
                     elif value.isdigit():
                         rezult[key] = int(value)
                     elif ',' in value:
-                        rezult[key] = float(value.replace(',', '.'))
+                        number_parts = value.split(',')
+                        if len(number_parts) == 2 and number_parts[0].isdigit() and number_parts[1].isdigit():
+                            rezult[key] = float(value.replace(',', '.'))
+                        else:
+                            rezult[key] = value
                     elif '.' in value:
                         rezult[key] = float(value)
                     elif value == '':
