@@ -49,12 +49,27 @@ def parse_settings(lines: list[str]) -> dict:
 
     return rezult
 
-print(parse_settings(lines = [
-    "# отчёт",
-    "title: Отчёт за март",
-    "decimals: 1",
-    "active: true",
-    "columns:",
-    "  - город",
-    "  - цена"
-]))
+def merge_by_key(rows: list[dict], extra: list[dict], key: str = "id") -> list[dict]:
+
+    rezult = []
+
+    for row in rows:
+        new_row = row
+        for extr in extra:
+            if key in row and key in extr and row[key] == extr[key]:
+                for ext_key in extr:
+                    if ext_key not in row:
+                        new_row[ext_key] = extr[ext_key]
+
+        rezult.append(new_row)
+
+    return rezult
+
+import json
+
+
+def records_to_json(records: list[dict]) -> str:
+    return json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True)
+
+# ensure_ascii для кирилицы
+# indent для отступов
