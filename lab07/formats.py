@@ -32,13 +32,15 @@ def parse_settings(lines: list[str]) -> dict:
                 parts = line.split(':')
                 if len(parts) >= 2:
                     key = (parts[0].strip())
-                    value = (parts[1].strip())
+                    value = parts[1].split('#')[0].strip()
                     if value == "true" or value == "yes":
                         rezult[key] = True
                     elif value == "false" or value == "no":
                         rezult[key] = False
                     elif value.isdigit():
                         rezult[key] = int(value)
+                    elif ',' in value:
+                        rezult[key] = float(value.replace(',', '.'))
                     elif '.' in value:
                         rezult[key] = float(value)
                     elif value == '':
